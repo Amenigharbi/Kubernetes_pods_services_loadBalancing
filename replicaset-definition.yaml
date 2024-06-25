@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: backend
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+       app: amani 
+       touka: touka
+  template:
+    metadata:
+      name: amani-nginx
+      labels: 
+        app: amani 
+        touka: touka
+    spec:
+     containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+    
